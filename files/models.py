@@ -34,8 +34,10 @@ class GeoJsonFile(models.Model):
     def get_filepath(self):
         # import media path
         from django.conf import settings
-
-        return os.path.join(settings.MEDIA_ROOT, "geojson", self.random_name())
+        if settings.DEPLOYED:
+            return os.path.join("/var/www/", "geojson", self.random_name())
+        else:
+            return os.path.join(settings.MEDIA_ROOT, "geojson", self.random_name())
 
     class Meta:
         ordering = ["-created_at"]

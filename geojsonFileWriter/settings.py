@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-r-x8--9%m4no^vhocft-omh6fiq$nn1w5z@du5p++-l#f12dj%
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-DEPLOYED = False
+DEPLOYED = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -57,7 +57,7 @@ ROOT_URLCONF = 'geojsonFileWriter.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ["templates"],
+        'DIRS': ["/home/darpankattel/geojsonFileWriter/templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -118,8 +118,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
-MEDIA_URL = 'media/'
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
 
 if not DEPLOYED:
     STATICFILES_DIRS = [
@@ -127,8 +127,8 @@ if not DEPLOYED:
     ]
     MEDIA_ROOT = BASE_DIR / 'media/'
 else:
-    STATIC_ROOT = '/static/'
-    MEDIA_ROOT = '/media/'
+    STATIC_ROOT = '/home/darpankattel/geojsonFileWriter/static/'
+    MEDIA_ROOT = '/home/darpankattel/geojsonFileWriter/media/'
 
 
 # Default primary key field type
