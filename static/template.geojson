@@ -1,0 +1,12 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "id": 1
+            },
+            "geometry": "paste_here"
+        }
+    ]
+}

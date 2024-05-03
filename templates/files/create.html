@@ -1,0 +1,42 @@
+{% extends 'main/base_template.html' %}
+{% load static %}
+
+
+{% block internal_css %}
+.helptext {
+font-size: 0.75rem;
+color: gray;
+font-style: italic;
+margin-top: -1rem;
+margin-bottom: 1rem;
+display: block;
+}
+
+.label {
+display: block;
+}
+{% endblock internal_css %}
+
+{% block content %}
+
+<main>
+    <div
+        class="d-flex flex-column justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Add File</h1>
+        <p class="lead">Enter the details of the file</p>
+        <div class="table-responsive small">
+
+            <form action="{% url 'create-file' %}" method="post">
+                {% csrf_token %}
+                {{ form }}
+                <br />
+                <input type="submit" value="Submit" class="btn btn-primary btn-block">
+            </form>
+
+        </div>
+
+    </div>
+</main>
+
+
+{% endblock content %}

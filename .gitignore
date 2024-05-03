@@ -1,0 +1,15 @@
+# Ignore the virtual environment directory
+env/
+docs/
+media/geojson/
+
+# Ignore database migrations
+**/migrations/
+
+# Ignore pycache
+__pycache__/
+
+# Ignore compiled Python files
+*.pyc
+*.pyo
+*.pyd

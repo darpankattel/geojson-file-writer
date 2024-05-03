@@ -1,0 +1,41 @@
+{% extends './base_template.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div class="col-10 col-sm-8 col-lg-6">
+            <img src="{% static 'images/world-map.webp' %}" class="d-block mx-lg-auto img-fluid btn-close-white"
+                alt="World map" width="700" height="500" loading="lazy">
+        </div>
+        <div class="col-lg-6">
+            <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">GeoJson File Writer</h1>
+            <p class="lead">Quickly designed and developed to help to write a gesojson file, for any project.
+                <br />
+                Contribute to the project on <a href="https://github.com/darpankattel/geojson-file-writer"
+                    target="_blank">GitHub</a>, as required, and please feel free to share your ideas.
+                <br />
+
+                Major future works to be added:
+            <ul class="list-group list-group-flush mb-2">
+                <li class="list-group-item">GeoJson Viewer</li>
+                <li class="list-group-item">User authentication</li>
+                <li class="list-group-item">History of changes</li>
+                <li class="list-group-item">User profile</li>
+                <li class="list-group-item">Geo data retriever, uploads, and more</li>
+            </ul>
+
+            <p class="lead">You can get started by doing any of the above tasks.</p>
+
+            </p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                <a href="{% url 'list-files' %}" class="btn btn-primary btn-lg px-4 me-md-2">Get Started</a>
+                <a href="https://github.com/darpankattel/geojson-file-writer"
+                    class="btn btn-light btn-lg px-4 bg-white"><img src="{% static 'icons/github.png' %}" width="24"
+                        alt="GitHub logo" style="margin-right:1rem;">GitHub</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

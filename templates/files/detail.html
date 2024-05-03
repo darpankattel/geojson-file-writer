@@ -1,0 +1,47 @@
+{% extends 'main/base_template.html' %}
+{% load static %}
+
+{% block content %}
+
+<main>
+    <div
+        class="d-flex flex-column justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">{{ file.title }}</h1>
+        <p class="lead">{{ file.description }}</p>
+        <p class="small">{{ file.created_at }} | {{ file.type_of_file }} | {{ file.completed }}</p>
+        <div class="btn-toolbar mb-2 mb-md-0 flex gap-2">
+            {% if file.completed %}
+            <a href="{% url 'download-file' file.id %}" class="btn btn-success btn-sm">Download File as .geojson</a>
+            {% else %}
+            <a href="{% url 'mark-complete' file.id %}?next=/files/{{ file.id }}/" class="btn btn-success btn-sm">Mark
+                Complete</a>
+            {% endif %}
+            <a href="{% url 'add-chunk' file.id %}" class="btn btn-info btn-sm">Add Feature</a>
+        </div>
+        <div class="table-responsive small">
+            <table class="table table-striped table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Created</th>
+                        <th scope="col">id</th>
+                        <th scope="col" width="30%">geometry</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for chunk in chunks %}
+                    <tr>
+                        <td>{{ chunk.id }}</td>
+                        <td>{{ chunk.created_at }}</td>
+                        <td>{{ chunk.json.properties.id }}</td>
+                        <td>{{ chunk.json.geometry }}</td>
+                        <!-- delete button -->
+                        <td><a href="{% url 'delete-chunk' file.id chunk.id %}" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+
+                    {% endblock content %}

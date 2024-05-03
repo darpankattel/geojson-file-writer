@@ -1,0 +1,21 @@
+{% extends './base_template.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div class="col-10 col-sm-8 col-lg-6">
+            <img src="{% static 'images/world-map.webp' %}" class="d-block mx-lg-auto img-fluid btn-close-white"
+                alt="World map" width="700" height="500" loading="lazy">
+        </div>
+        <div class="col-lg-6">
+            <p class="bold text-body-emphasis">By</p>
+            <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Darpan Kattel</h1>
+            <p class="lead">I am an Engineering Student, a Developer, and a Programmer. For more, please visit my <a
+                    href="https://github.com/darpankattel" target="_blank">Github</a>, and my <a
+                    href="https://darpankattel.com.np/" target="_blank">Website</a>.</p>
+        </div>
+    </div>
+</div>
+{% endblock content %}
