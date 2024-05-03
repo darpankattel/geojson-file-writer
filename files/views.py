@@ -75,7 +75,7 @@ def download(request, file_id):
         f.write(json.dumps(geo_data))
         print(f'{output_path} created')
         file.output = str(
-            output_path + '.geojson').split('media\\')[1].replace('\\', '/')
+            output_path + '.geojson').replace('\\', '/').split('media/')[1]
         # file.output = str(output_path + '.geojson')[loc:]
         file.save()
     response = HttpResponse(file.output, content_type='application/json')
