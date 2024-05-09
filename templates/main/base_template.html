@@ -95,51 +95,54 @@
             display: block !important;
         }
 
-/* Style for the messages container */
-.messages {
-    list-style: none;
-    padding: 0;
-}
+        /* Style for the messages container */
+        .messages {
+            list-style: none;
+            padding: 0;
+        }
 
-/* Style for individual messages */
-.messages li {
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    background-color: #f9f9f9;
-    border-radius: 4px;
-}
+        /* Style for individual messages */
+        .messages li {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+        }
 
-/* Message-specific styles based on tags */
-.messages li.info {
-    background-color: #d9edf7;
-    border-color: #bce8f1;
-    color: #31708f;
-}
+        /* Message-specific styles based on tags */
+        .messages li.info {
+            background-color: #d9edf7;
+            border-color: #bce8f1;
+            color: #31708f;
+        }
 
-.messages li.success {
-    background-color: #27AE60;
-    border-color: #1E8449;
-    color: #ffffff;
-}
+        .messages li.success {
+            background-color: #27AE60;
+            border-color: #1E8449;
+            color: #ffffff;
+        }
 
-.messages li.warning {
-    background-color: #fcf8e3;
-    border-color: #faebcc;
-    color: #8a6d3b;
-}
+        .messages li.warning {
+            background-color: #fcf8e3;
+            border-color: #faebcc;
+            color: #8a6d3b;
+        }
 
-.messages li.error {
-    background-color: #f2dede;
-    border-color: #ebccd1;
-    color: #a94442;
-}
+        .messages li.error {
+            background-color: #f2dede;
+            border-color: #ebccd1;
+            color: #a94442;
+        }
 
-            {% block internal_css %}
+            {
+            % block internal_css %
+        }
 
-            
-            {% endblock internal_css %}
-        
+
+            {
+            % endblock internal_css %
+        }
     </style>
 
 
@@ -182,17 +185,22 @@
             </div>
         </div>
     </header>
-{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>
             {{ message }}
-        </li>
-    {% endfor %}
-</ul>
-{% endif %}
+            </li>
+            {% endfor %}
+    </ul>
+    {% endif %}
 
     {% block content %}{% endblock content %}
+
+
+
+    {% block internal_js %}
+    {% endblock internal_js %}
 </body>
 
 </html>

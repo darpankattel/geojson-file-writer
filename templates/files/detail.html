@@ -26,6 +26,7 @@
                         <th scope="col">Created</th>
                         <th scope="col">id</th>
                         <th scope="col" width="30%">geometry</th>
+                        <th scope="col" width="30%">Green Field</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -37,11 +38,35 @@
                         <td>{{ chunk.created_at }}</td>
                         <td>{{ chunk.json.properties.id }}</td>
                         <td>{{ chunk.json.geometry }}</td>
+                        <td>{{ chunk.json.properties.green_field }}</td>
                         <!-- delete button -->
-                        <td><a href="{% url 'delete-chunk' file.id chunk.id %}" class="btn btn-danger btn-sm">Delete</a>
+                        <td><button onclick=handle_delete("{% url 'delete-chunk' file.id chunk.id %}")
+                                class="btn btn-danger btn-sm">Delete</button>
+                            <!-- edit action -->
+                            <a href="{% url 'edit-chunk' file.id chunk.id %}" class="btn btn-primary btn-sm">Edit</a>
                         </td>
                     </tr>
-
                     {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
 
-                    {% endblock content %}
+
+
+{% endblock content %}
+
+{% block internal_js %}
+
+<script>
+    function handle_delete(url) {
+        if (confirm("Are you sure you want to delete this feature?")) {
+            window.location.href = url;
+        } else {
+            return false;
+        }
+    }
+</script>
+
+{% endblock internal_js %}

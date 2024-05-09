@@ -66,6 +66,20 @@ def deleteChunk(request, file_id, chunk_id):
     return redirect('detail-file', file_id=file_id)
 
 
+def editChunk(request, file_id, chunk_id):
+    if request.method == 'POST':
+        form = ChunkForm(request.POST)
+        if form.is_valid():
+            form.save(chunk_id=chunk_id)
+            return redirect('detail-file', file_id=file_id)
+    else:
+        file = GeoJsonFile.objects.get(id=file_id)
+        chunk = Chunk.objects.get(id=chunk_id)
+        form = ChunkForm(initial={
+                         'id': chunk.id, 'geometry': chunk.json['geometry'], 'green_field': chunk.json['properties'].get('green_field')})
+    return render(request, 'files/editChunk.html', {'form': form, 'file': file, 'chunk': chunk})
+
+
 def download(request, file_id):
     file = GeoJsonFile.objects.get(id=file_id)
     chunks = Chunk.objects.filter(file=file).order_by('created_at')

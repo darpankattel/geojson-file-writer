@@ -1,0 +1,26 @@
+{% extends 'main/base_template.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<main>
+    <div
+        class="d-flex flex-column justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Edit Feature: {{ chunk.id }}</h1>
+        <p class="lead">File: <a href="{% url 'detail-file' file.id %}">{{ file.title }}</a></p>
+        <div class="table-responsive small">
+
+            <form action="{% url 'edit-chunk' file.id chunk.id %}" method="post">
+                {% csrf_token %}
+                {{ form }}
+                <input type="submit" value="Update" class="btn btn-primary btn-sm">
+            </form>
+
+        </div>
+
+    </div>
+</main>
+
+
+{% endblock content %}
